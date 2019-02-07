@@ -1,0 +1,200 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" class="form-control" ngModel name="username">
+        </div>
+
+        <button class="btn btn-default" type="button">Suggest an Username</button>
+
+        <div class="form-group">
+          <label for="email">Mail</label>
+          <input type="email" id="email" class="form-control" ngModel name="email" #email="ngModel">
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+        </div>
+
+      </div>
+          <p *ngIf="!userData.valid && userData.touched">User data is invalid!</p>
+
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select name="secret" id="secret" class="form-control" [ngModel]="defaultQuestion">
+            <option value="pet">Your First Pet</option>
+            <option value="teacher">Your First Teacher</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <textarea name="questionAnswer" rows="3" class="form-control" [(ngModel)]="answer">
+          </textarea>
+        </div>
+
+        <p>Your Reply: {{answer}} </p>
+
+        <div class="radio" *ngFor="let gender of genders">
+          <label >
+            <input 
+            type="radio" 
+            name="gender" 
+            ngModel 
+            [value]="gender"
+          >
+            {{gender}}
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+        disabled="!f.valid"
+      
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+<!--------------------------------------- Sprint Data Starts -------------------------------------->
+
+<mat-toolbar class="tool-bar">
+  <h4>Sprint Data</h4>
+</mat-toolbar>
+<div class="container">
+
+  <form (ngSubmit)="onSubmit()" #sprintData="ngForm">
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Start Date">Start Date</label></dt>
+        <input type="date" id="Start Date" class="form-control" ngModel name="Start Date">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="End Date">End Date</label></dt>
+        <input type="date" id="End Date" class="form-control" ngModel name="End Date">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Planned Bandwidth">Planned Bandwidth</label></dt>
+        <input type="number" id="Planned Bandwidth" class="form-control" ngModel name="Planned Bandwidth">
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Actual Bandwidth">Actual Bandwidth</label></dt>
+        <input type="number" id="Actual Bandwidth" class="form-control" ngModel name="Actual Bandwidth">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="User Story">User Story</label></dt>
+        <input type="text" id="User Story" class="form-control" ngModel name="User Story">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Story Type">Story Type</label></dt>
+        <input type="text" id="Story Type" class="form-control" ngModel name="Story Type">
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Story Status">Story Status</label></dt>
+        <input type="text" id="Story Status" class="form-control" ngModel name="Story Status">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="secret">Activity/Task</label></dt>
+        <select name="activity" id="activity" class="form-control" [ngModel]="defaultActivity">
+          <option value="anlysis">Anlysis</option>
+          <option value="build">Build</option>
+          <option value="unitTesting">Unit Testing</option>
+          <option value="testScriptCreation">Test Script Creation</option>
+          <option value="testing">Testing</option>
+          <option value="rework">Rework</option>
+          <option value="idle">Idle</option>
+          <option value="deployment">Deployment</option>
+        </select>
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Activity Status">Activity Status</label></dt>
+        <input type="text" id="Activity Status" class="form-control" ngModel name="Activity Status">
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Date">Date</label></dt>
+        <input type="date" id="Date" class="form-control" ngModel name="Date">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Planned Story Point">Planned Story Point</label></dt>
+        <input type="number" id="Planned Story Point" class="form-control" ngModel name="Planned Story Point">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Actual Story Point">Actual Story Point</label></dt>
+        <input type="number" id="Actual Story Point" class="form-control" ngModel name="Actual Story Point">
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Consumed SP">Consumed SP</label></dt>
+        <input type="number" id="Consumed SP" class="form-control" ngModel name="Consumed SP">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="variance">Variance (%)</label></dt>
+        <input type="number" id="variance" class="form-control" ngModel name="variance">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Story Maturity">Story Maturity</label></dt>
+        <select name="Story Maturity" id="Story Maturity" class="form-control" [ngModel]="defaultStoryMaturity">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Activity Start Date">Activity Start Date</label></dt>
+        <input type="date" id="Activity Start Date" class="form-control" ngModel name="Activity Start Date">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Activity End Date">Activity End Date</label></dt>
+        <input type="date" id="Activity End Date" class="form-control" ngModel name="Activity End Date">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Resource">Resource</label></dt>
+        <input type="text" id="Resource" class="form-control" ngModel name="Resource">
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Percentage Completion">Percentage Completion</label></dt>
+        <input type="number" id="Percentage Completion" class="form-control" ngModel name="Percentage Completion">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Accountable Hour">Accountable Hour</label></dt>
+        <input type="time" id="Accountable Hour" class="form-control" ngModel name="Accountable Hour">
+      </div>
+      <div class="col" id="ex2">
+        <dt><label for="Reason of Variance">Reason of Variance</label></dt>
+        <input type="text" id="Reason of Variance" class="form-control" ngModel name="Reason of Variance">
+      </div>
+    </div>
+
+    <div class="form-row" id="ex1">
+      <div class="col">
+        <dt><label for="Corrective Measures">Corrective Measures</label></dt>
+        <input type="text" id="Corrective Measures" class="form-control" ngModel name="Corrective Measures">
+      </div>
+      <div class="col">
+        <dt><label for="Risk If Any">Risk If Any</label></dt>
+        <input type="text" id="Risk If Any" class="form-control" ngModel name="Risk If Any">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" id="ex1">Submit</button>
+
+  </form>
+</div>
+<!--------------------------------------- Sprint Data Ends -------------------------------------->
