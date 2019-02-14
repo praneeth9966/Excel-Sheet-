@@ -17,7 +17,7 @@ export class DataServiceService {
     return this.http.get('https://myassignment-617b7.firebaseio.com/.json')
   }
 
-  updateData(newData : any[]){
+  updateData(newData ){
     return  this.http.put('https://myassignment-617b7.firebaseio.com/.json',newData);
   }
 

@@ -211,8 +211,8 @@
 
 <div *ngFor="let exist of existDeatails">
     <div class="container-fluid" *ngIf="newUser==false" >
-      <form (ngSubmit)="update(newdata)" #newdata="ngForm">
-  
+      <form (ngSubmit)="update()" #newdata="ngForm">
+        
         <div class="col-sm-12">
           <div class="row">
             <div class="col-sm-7 five-three">
@@ -391,6 +391,10 @@
         <div class="col-sm-12">
           <button type="submit" class="btn btn-success" id="ex1">Submit</button>
         </div>
+
+        <!-- <div class="col-sm-12">
+          <button type="submit" class="btn btn-success" id="ex1">Update</button>
+        </div> -->
       </form>
     </div>
   </div>

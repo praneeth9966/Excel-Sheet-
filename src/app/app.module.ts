@@ -9,6 +9,11 @@ import { HttpModule } from '@angular/http';
 import { DataServiceService } from './Services/data-service.service';
 import {HttpClientModule } from '@angular/common/http';
 
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,6 +25,9 @@ import {HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     HttpModule,
     HttpClientModule,
+   
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFireDatabaseModule
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]

@@ -2,12 +2,14 @@ import { Component, ViewChild, OnInit, ElementRef} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServiceService } from './Services/data-service.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+  
   title = 'my-assignment';
   defaultActivity = ""
   defaultStoryMaturity = ""
@@ -23,6 +25,10 @@ export class AppComponent implements OnInit{
   public newUser = true;
   public existDeatails : any =[];
   public updateDeatails : any =[];
+  public responseKey :any = [];
+  public newproduct ;
+  public newproduct1 ;
+  public result = {};
   // public existingUser = false;
   constructor(private dataService:DataServiceService) {}
 
@@ -30,42 +36,110 @@ export class AppComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.formSprintData.value);
+    console.log(this.formSprintData);
     this.data = JSON.stringify(this.formSprintData.value);
     this.dataService.postData(this.data)
     .subscribe(
-      (response) => console.log(response),
+      (response) => {
+      console.log(response)
+      this.responseKey.push(response)
+    console.log(this.responseKey);
+    },
       (error) => console.log(error)
     );  
   }
 
   update() {
-    console.log(this.updatedData.value);
-    this.data = JSON.stringify(this.updatedData.value);
-    this.dataService.updateData (this.updateDeatails)
-    .subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );  
+    console.log(this.updatedData['value']['Story Maturity']);
+    
+    this.dataService.getData().subscribe(
+      (response) => {
+        console.log(response);
+       this.mapped = Object.keys(response).map(key => ({type: key, value: response[key]}))
+       console.log(this.mapped);
+       for(var i=0; i<this.mapped.length; i++) {
+        this.userStory1 = this.mapped[i]['value']['User Story'];
+        console.log(this.userStory1);
+        if(this.existUserData.nativeElement.value===this.userStory1){
+          console.log(this.updatedData);
+          
+          console.log(this.mapped[i]['value']['Story Maturity']);
+          
+          this.updateDeatails = JSON.stringify(this.updatedData.value);
+          console.log(this.updateDeatails);
+          
+          this.mapped[i]['value']['Story Maturity']=this.updatedData['value']['Story Maturity']
+          this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+          // this.mapped[i]['value']['activity']=this.updatedData['value']['activity']
+
+          console.log(this.mapped);
+
+          // this.newproduct=this.normalizeArray(this.mapped[i]['value'],'type')
+          // console.log(this.updatedData.value);
+          // this.newproduct = Object.assign({}, ...this.mapped);
+          // console.log(this.newproduct);
+          // this.newproduct1=JSON.stringify(this.newproduct);
+
+           
+              for (var i=0; i<this.mapped.length; i++) {
+                this.result[this.mapped[i].type] = this.mapped[i].value;
+              }
+
+            //result
+            console.log(this.result);
+          
+          this.dataService.updateData (this.result)
+          .subscribe(
+            (response) => console.log(response),
+            (error) => console.log(error)
+          );  
+          this.newUser=false;
+          // this.userStory= this.userStory1;
+          
+          break;
+        }
+       }
+      }
+    )
+
+
+    
   }
 
   newUserDeatails() {
     this.newUser = true;
   }
 
-  existingUserDeatails() {
+  existingUserDeatails() {                                                                                            
     console.log(this.existUserData.nativeElement.value);
     this.dataService.getData().subscribe(
       (response) => {
-      // console.log(response['-LY5i5cR9HciW81_aYsq']['User Story'])
-      // console.log(response),
+        console.log(response);
        this.mapped = Object.keys(response).map(key => ({type: key, value: response[key]}))
-      //  this.userStory = this.mapped[0]['value']['User Story'];
-      // console.log(this.userStory);
-      
+       console.log(this.mapped);
        for(var i=0; i<this.mapped.length; i++) {
         this.userStory1 = this.mapped[i]['value']['User Story'];
-        console.log(this.userStory);
+        console.log(this.userStory1);
         if(this.existUserData.nativeElement.value===this.userStory1){
           this.newUser=false;
           this.userStory= this.userStory1;
@@ -74,9 +148,17 @@ export class AppComponent implements OnInit{
           break;
         }
        }
-      
       }
     )
   }
+
+//    normalizeArray<T>(mapped: Array<T>, indexKey: keyof T) {
+//     const normalizedObject: any = {}
+//     for (let i = 0; i < this.mapped.length; i++) {
+//          const key = this.mapped[i][indexKey]
+//          normalizedObject[key] = this.mapped[i]
+//     }
+//     return normalizedObject as { [key: string]: T }
+// }
   
 }
