@@ -9,16 +9,16 @@ export class DataServiceService {
 
   constructor(private http: HttpClient) { }
 
-  postData (userData : any[]) {
-      return this.http.post('https://myassignment-617b7.firebaseio.com/.json', userData)
+  postData(userData: any[]) {
+    return this.http.post('https://myassignment-617b7.firebaseio.com/.json', userData)
   }
 
-  getData () {
+  getData() {
     return this.http.get('https://myassignment-617b7.firebaseio.com/.json')
   }
 
-  updateData(newData ){
-    return  this.http.put('https://myassignment-617b7.firebaseio.com/.json',newData);
+  updateData(newData) {
+    return this.http.put('https://myassignment-617b7.firebaseio.com/.json', newData);
   }
 
 }
