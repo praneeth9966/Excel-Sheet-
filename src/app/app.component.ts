@@ -2,7 +2,6 @@ import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServiceService } from './Services/data-service.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -34,6 +33,10 @@ export class AppComponent implements OnInit {
 
   newUserDeatails() {
     this.newUser = true;
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   onSubmit() {
@@ -113,6 +116,7 @@ export class AppComponent implements OnInit {
         console.log(response);
         this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
         console.log(this.mapped);
+        this.existDeatails = [];
         for (var i = 0; i < this.mapped.length; i++) {
           this.userStory1 = this.mapped[i]['value']['User Story'];
           console.log(this.userStory1);
@@ -122,9 +126,11 @@ export class AppComponent implements OnInit {
             this.existDeatails.push(this.mapped[i]);
             console.log(this.existDeatails);
             break;
-          }
+          }   
         }
       }
     )
   }
+
 }
+
