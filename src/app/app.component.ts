@@ -117,7 +117,7 @@ export class AppComponent implements OnInit {
         this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
         console.log(this.mapped);
         this.existDeatails = [];
-        for (var i = 0; i < this.mapped.length; i++) {
+          for (var i = this.mapped.length-1; i>=0; i--) {
           this.userStory1 = this.mapped[i]['value']['User Story'];
           console.log(this.userStory1);
           if (this.existUserData.nativeElement.value === this.userStory1) {
@@ -126,7 +126,10 @@ export class AppComponent implements OnInit {
             this.existDeatails.push(this.mapped[i]);
             console.log(this.existDeatails);
             break;
-          }   
+          } 
+        }
+        if (this.existDeatails.length == 0) {
+          alert("Please enter Valid User Story");
         }
       }
     )

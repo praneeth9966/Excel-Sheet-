@@ -1,4 +1,3 @@
-<!-------------------------------------- New User Starts----------------------------------------->
 
 <div>
   <mat-toolbar class="tool-bar">
@@ -50,7 +49,7 @@
               </div>
               <div class="col-sm-6">
                 <dt><label for="User Story">User Story</label></dt>
-                <input type="text" id="User Story" class="form-control" ngModel name="User Story">
+                <input type="text" id="User Story" class="form-control" ngModel name="User Story" required>
               </div>
             </div>
           </div>
@@ -64,11 +63,26 @@
             <div class="row">
               <div class="col-sm-4">
                 <dt><label for="Story Type">Story Type</label></dt>
-                <input type="text" id="Story Type" class="form-control" ngModel name="Story Type">
+                <select name="Story Type" id="Story Type" class="form-control" [ngModel]="defaultActivity">
+                  <option value="bug">Bug</option>
+                  <option value="story">Story</option>
+                  <option value="task">Task</option>
+                  <option value="subtask">Sub-task</option>
+                  <option value="epic">Epic</option>
+                </select>
               </div>
               <div class="col-sm-4">
                 <dt><label for="Story Status">Story Status</label></dt>
-                <input type="text" id="Story Status" class="form-control" ngModel name="Story Status">
+                <select name="Story Status" id="Story Status" class="form-control" [ngModel]="defaultActivity">
+                  <option value="done">Done</option>
+                  <option value="uat">UAT</option>
+                  <option value="peerReview">Peer Review</option>
+                  <option value="deskCheck">Desk check</option>
+                  <option value="open">Open</option>
+                  <option value="analysis">Analysis</option>
+                  <option value="readyForDev">Ready for dev</option>
+                  <option value="inProgress">In Progress</option>
+                </select>
               </div>
               <div class="col-sm-4">
                 <dt><label for="secret">Activity/Task</label></dt>
@@ -89,7 +103,12 @@
             <div class="row">
               <div class="col-sm-6">
                 <dt><label for="Activity Status">Activity Status</label></dt>
-                <input type="text" id="Activity Status" class="form-control" ngModel name="Activity Status">
+                <select name="Activity Status" id="Activity Status" class="form-control" [ngModel]="defaultActivity">
+                  <option value="notStarted">Not Started</option>
+                  <option value="awaitingClarification">Awaiting Clarification</option>
+                  <option value="inProgress">In Progress</option>
+                  <option value="complete">Complete</option>
+                </select>
               </div>
               <div class="col-sm-6">
                 <dt><label for="Date">Date</label></dt>
@@ -165,7 +184,10 @@
               </div>
               <div class="col-sm-6">
                 <dt><label for="Accountable Hour">Accountable Hour</label></dt>
-                <input type="time" id="Accountable Hour" class="form-control" ngModel name="Accountable Hour">
+                <select name="Accountable Hour" id="Accountable Hour" class="form-control" [ngModel]="defaultStoryMaturity">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
               </div>
             </div>
           </div>
@@ -200,15 +222,13 @@
       </div>
 
       <div class="col-sm-12">
-        <button type="submit" class="btn btn-success" id="ex1">Submit</button>
+        <button type="submit" class="btn btn-success" id="ex1" [disabled]="!sprintData.valid">Submit</button>
       </div>
     </form>
   </div>
 </div>
-<!-------------------------------------- New User Ends----------------------------------------->
 
 
-<!-------------------------------------- Existing User Starts----------------------------------->
 
 <div *ngFor="let exist of existDeatails">
   <div class="container-fluid" *ngIf="newUser==false">
@@ -258,14 +278,27 @@
           <div class="col-sm-7 five-three">
             <div class="row">
               <div class="col-sm-4">
-                <dt><label for="Story Type">Story Type</label></dt>
-                <input type="text" id="Story Type" class="form-control" [(ngModel)]="exist['value']['Story Type']"
-                  name="Story Type">
+                  <dt><label for="Story Type">Story Type</label></dt>
+                  <select name="Story Type" id="Story Type" class="form-control" [(ngModel)]="exist['value']['Story Type']">
+                  <option value="bug">Bug</option>
+                  <option value="story">Story</option>
+                  <option value="task">Task</option>
+                  <option value="subtask">Sub-task</option>
+                  <option value="epic">Epic</option>
+                </select>
               </div>
               <div class="col-sm-4">
-                <dt><label for="Story Status">Story Status</label></dt>
-                <input type="text" id="Story Status" class="form-control" [(ngModel)]="exist['value']['Story Status']"
-                  name="Story Status">
+                  <dt><label for="Story Status">Story Status</label></dt>
+                <select name="Story Status" id="Story Status" class="form-control" [(ngModel)]="exist['value']['Story Status']">
+                  <option value="done">Done</option>
+                  <option value="uat">UAT</option>
+                  <option value="peerReview">Peer Review</option>
+                  <option value="deskCheck">Desk check</option>
+                  <option value="open">Open</option>
+                  <option value="analysis">Analysis</option>
+                  <option value="readyForDev">Ready for dev</option>
+                  <option value="inProgress">In Progress</option>
+                </select>
               </div>
               <div class="col-sm-4">
                 <dt><label for="secret">Activity/Task</label></dt>
@@ -285,9 +318,13 @@
           <div class="col-sm-5 five-two">
             <div class="row">
               <div class="col-sm-6">
-                <dt><label for="Activity Status">Activity Status</label></dt>
-                <input type="text" id="Activity Status" class="form-control"
-                  [(ngModel)]="exist['value']['Activity Status']" name="Activity Status">
+                  <dt><label for="Activity Status">Activity Status</label></dt>
+                  <select name="Activity Status" id="Activity Status" class="form-control" [(ngModel)]="exist['value']['Activity Status']">
+                  <option value="notStarted">Not Started</option>
+                  <option value="awaitingClarification">Awaiting Clarification</option>
+                  <option value="inProgress">In Progress</option>
+                  <option value="complete">Complete</option>
+                </select>
               </div>
               <div class="col-sm-6">
                 <dt><label for="Date">Date</label></dt>
@@ -371,8 +408,10 @@
               </div>
               <div class="col-sm-6">
                 <dt><label for="Accountable Hour">Accountable Hour</label></dt>
-                <input type="time" id="Accountable Hour" class="form-control"
-                  [(ngModel)]="exist['value']['Accountable Hour']" name="Accountable Hour">
+                  <select name="Accountable Hour" id="Accountable Hour" class="form-control" [(ngModel)]="exist['value']['Accountable Hour']">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
               </div>
             </div>
           </div>
@@ -415,4 +454,3 @@
     </form>
   </div>
 </div>
-<!-------------------------------------- Existing User ends-------------------------------->
