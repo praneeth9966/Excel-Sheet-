@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServiceService } from './Services/data-service.service';
 
@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
   @ViewChild('sprintData') formSprintData: NgForm;
   @ViewChild('existUser') existUserData: ElementRef;
   @ViewChild('newdata') updatedData: NgForm;
-
+  @Input() editable: boolean = false;
+  butDisabled: boolean = true;
   public data: any = [];
   public mapped;
   public userStory;
@@ -117,7 +118,7 @@ export class AppComponent implements OnInit {
         this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
         console.log(this.mapped);
         this.existDeatails = [];
-          for (var i = this.mapped.length-1; i>=0; i--) {
+        for (var i = this.mapped.length - 1; i >= 0; i--) {
           this.userStory1 = this.mapped[i]['value']['User Story'];
           console.log(this.userStory1);
           if (this.existUserData.nativeElement.value === this.userStory1) {
@@ -126,7 +127,7 @@ export class AppComponent implements OnInit {
             this.existDeatails.push(this.mapped[i]);
             console.log(this.existDeatails);
             break;
-          } 
+          }
         }
         if (this.existDeatails.length == 0) {
           alert("Please enter Valid User Story");
@@ -136,4 +137,3 @@ export class AppComponent implements OnInit {
   }
 
 }
-
