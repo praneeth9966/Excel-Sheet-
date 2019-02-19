@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { DataServiceService } from './Services/data-service.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ExcelService } from './Services/excel-service/excel.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
 
   ],
-  providers: [DataServiceService],
+  providers: [DataServiceService,ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

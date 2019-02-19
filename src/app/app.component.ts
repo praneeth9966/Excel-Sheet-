@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, ElementRef, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServiceService } from './Services/data-service.service';
+import { ExcelService } from './Services/excel-service/excel.service';
 
 @Component({
   selector: 'app-root',
@@ -26,8 +27,9 @@ export class AppComponent implements OnInit {
   public existDeatails: any = [];
   public updateDeatails: any = [];
   public responseKey: any = [];
+  public excelDetails: any = [];
   public result = {};
-  constructor(private dataService: DataServiceService) { }
+  constructor(private dataService: DataServiceService, private excelService: ExcelService) { }
 
   ngOnInit() {
   }
@@ -134,6 +136,14 @@ export class AppComponent implements OnInit {
         }
       }
     )
+  }
+
+  exportAsXLSX() {
+    for (var i = 0; i < this.mapped.length; i++) {
+      this.excelDetails.push(this.mapped[i]['value'])
+      console.log(this.excelDetails);
+    }
+    this.excelService.exportAsExcelFile(this.excelDetails, 'sample');
   }
 
 }
