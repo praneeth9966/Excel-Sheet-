@@ -1,5 +1,5 @@
 <div>
-  <mat-toolbar class="tool-bar">
+  <mat-toolbar [ngClass]="newUser==true ? 'selected' : 'notselected'">
     <div class="row">
       <div class="col">
         <h4>Sprint Data</h4>
@@ -28,27 +28,27 @@
           <div class="col-sm-7 five-three">
             <div class="row">
               <div class="col-sm-4">
-                <dt><label for="Start Date">Start Date</label></dt>
+                <td><label for="Start Date">Start Date</label></td>
                 <input type="date" id="Start Date" class="form-control" ngModel name="Start Date">
               </div>
               <div class="col-sm-4">
-                <dt><label for="End Date">End Date</label></dt>
+                <td><label for="End Date">End Date</label></td>
                 <input type="date" id="End Date" class="form-control" ngModel name="End Date">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Planned Bandwidth">Planned Bandwidth</label></dt>
-                <input type="number" id="Planned Bandwidth" class="form-control" ngModel name="Planned Bandwidth">
+                <td><label for="Planned Bandwitdh">Planned Bandwitdh</label></td>
+                <input type="number" id="Planned Bandwitdh" class="form-control" ngModel name="Planned Bandwitdh">
               </div>
             </div>
           </div>
           <div class="col-sm-5 five-two">
             <div class="row">
               <div class="col-sm-6">
-                <dt><label for="Actual Bandwidth">Actual Bandwidth</label></dt>
-                <input type="number" id="Actual Bandwidth" class="form-control" ngModel name="Actual Bandwidth">
+                <td><label for="Actual Bandwitdh">Actual Bandwitdh</label></td>
+                <input type="number" id="Actual Bandwitdh" class="form-control" ngModel name="Actual Bandwitdh">
               </div>
               <div class="col-sm-6">
-                <dt><label for="User Story">User Story</label></dt>
+                <td><label for="User Story">User Story</label></td>
                 <input type="text" id="User Story" class="form-control" ngModel name="User Story" required>
               </div>
             </div>
@@ -62,7 +62,7 @@
           <div class="col-sm-7 five-three">
             <div class="row">
               <div class="col-sm-4">
-                <dt><label for="Story Type">Story Type</label></dt>
+                <td><label for="Story Type">Story Type</label></td>
                 <select name="Story Type" id="Story Type" class="form-control" [ngModel]="defaultActivity">
                   <option value="bug">Bug</option>
                   <option value="story">Story</option>
@@ -72,7 +72,7 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <dt><label for="Story Status">Story Status</label></dt>
+                <td><label for="Story Status">Story Status</label></td>
                 <select name="Story Status" id="Story Status" class="form-control" [ngModel]="defaultActivity">
                   <option value="done">Done</option>
                   <option value="uat">UAT</option>
@@ -85,7 +85,7 @@
                 </select>
               </div>
               <div class="col-sm-4">
-                <dt><label for="secret">Activity/Task</label></dt>
+                <td><label for="secret">Activity/Task</label></td>
                 <select name="activity" id="activity" class="form-control" [ngModel]="defaultActivity">
                   <option value="anlysis">Anlysis</option>
                   <option value="build">Build</option>
@@ -102,7 +102,7 @@
           <div class="col-sm-5 five-two">
             <div class="row">
               <div class="col-sm-6">
-                <dt><label for="Activity Status">Activity Status</label></dt>
+                <td><label for="Activity Status">Activity Status</label></td>
                 <select name="Activity Status" id="Activity Status" class="form-control" [ngModel]="defaultActivity">
                   <option value="notStarted">Not Started</option>
                   <option value="awaitingClarification">Awaiting Clarification</option>
@@ -111,7 +111,7 @@
                 </select>
               </div>
               <div class="col-sm-6">
-                <dt><label for="Date">Date</label></dt>
+                <td><label for="Date">Date</label></td>
                 <input type="date" id="Date" class="form-control" ngModel name="Date">
               </div>
             </div>
@@ -125,15 +125,15 @@
           <div class="col-sm-7 five-three">
             <div class="row">
               <div class="col-sm-4">
-                <dt><label for="Planned Story Point">Planned Story Point</label></dt>
+                <td><label for="Planned Story Point">Planned Story Point</label></td>
                 <input type="number" id="Planned Story Point" class="form-control" ngModel name="Planned Story Point">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Actual Story Point">Actual Story Point</label></dt>
+                <td><label for="Actual Story Point">Actual Story Point</label></td>
                 <input type="number" id="Actual Story Point" class="form-control" ngModel name="Actual Story Point">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Consumed SP">Consumed SP</label></dt>
+                <td><label for="Consumed SP">Consumed SP</label></td>
                 <input type="number" id="Consumed SP" class="form-control" ngModel name="Consumed SP">
               </div>
             </div>
@@ -141,11 +141,11 @@
           <div class="col-sm-5 five-two">
             <div class="row">
               <div class="col-sm-6">
-                <dt><label for="variance">Variance (%)</label></dt>
+                <td><label for="variance">Variance (%)</label></td>
                 <input type="number" id="variance" class="form-control" ngModel name="variance">
               </div>
               <div class="col-sm-6">
-                <dt><label for="Story Maturity">Story Maturity</label></dt>
+                <td><label for="Story Maturity">Story Maturity</label></td>
                 <select name="Story Maturity" id="Story Maturity" class="form-control" [ngModel]="defaultStoryMaturity">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
@@ -162,15 +162,15 @@
           <div class="col-sm-7 five-three">
             <div class="row">
               <div class="col-sm-4">
-                <dt><label for="Activity Start Date">Activity Start Date</label></dt>
+                <td><label for="Activity Start Date">Activity Start Date</label></td>
                 <input type="date" id="Activity Start Date" class="form-control" ngModel name="Activity Start Date">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Activity End Date">Activity End Date</label></dt>
+                <td><label for="Activity End Date">Activity End Date</label></td>
                 <input type="date" id="Activity End Date" class="form-control" ngModel name="Activity End Date">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Resource">Resource</label></dt>
+                <td><label for="Resource">Resource</label></td>
                 <input type="text" id="Resource" class="form-control" ngModel name="Resource">
               </div>
             </div>
@@ -178,12 +178,12 @@
           <div class="col-sm-5 five-two">
             <div class="row">
               <div class="col-sm-6">
-                <dt><label for="Percentage Completion">Percentage Completion</label></dt>
+                <td><label for="Percentage Completion">Percentage Completion</label></td>
                 <input type="number" id="Percentage Completion" class="form-control" ngModel
                   name="Percentage Completion">
               </div>
               <div class="col-sm-6">
-                <dt><label for="Accountable Hour">Accountable Hour</label></dt>
+                <td><label for="Accountable Hour">Accountable Hour</label></td>
                 <select name="Accountable Hour" id="Accountable Hour" class="form-control"
                   [ngModel]="defaultStoryMaturity">
                   <option value="yes">Yes</option>
@@ -201,15 +201,15 @@
           <div class="col-sm-7 five-three">
             <div class="row">
               <div class="col-sm-4">
-                <dt><label for="Reason of Variance">Reason of Variance</label></dt>
+                <td><label for="Reason of Variance">Reason of Variance</label></td>
                 <input type="text" id="Reason of Variance" class="form-control" ngModel name="Reason of Variance">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Corrective Measures">Corrective Measures</label></dt>
+                <td><label for="Corrective Measures">Corrective Measures</label></td>
                 <input type="text" id="Corrective Measures" class="form-control" ngModel name="Corrective Measures">
               </div>
               <div class="col-sm-4">
-                <dt><label for="Risk If Any">Risk If Any</label></dt>
+                <td><label for="Risk If Any">Risk If Any</label></td>
                 <input type="text" id="Risk If Any" class="form-control" ngModel name="Risk If Any">
               </div>
             </div>
@@ -227,60 +227,65 @@
       </div>
     </form>
   </div>
-</div>
 
 
 
-<div *ngFor="let exist of existDeatails">
-  <div class="container-fluid" *ngIf="newUser==false">
-    <form (ngSubmit)="update()" #newdata="ngForm">
 
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-7 five-three">
-            <div class="row">
-              <div class="col-sm-4">
-                <dt><label for="Start Date">Start Date</label></dt>
+  <div *ngFor="let exist of existDeatails">
+    <div class="container-fluid" *ngIf="newUser==false">
+      <form (ngSubmit)="update()" #newdata="ngForm">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Start Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">Planned Bandwitdh</th>
+              <th scope="col">Actual Bandwitdh</th>
+              <th scope="col">User Story</th>
+              <th scope="col">Story Type</th>
+              <th scope="col">Story Status</th>
+              <th scope="col">Activity/Task</th>
+              <th scope="col">Activity Status</th>
+              <th scope="col">Date</th>
+              <th scope="col">Planned Story Point</th>
+              <th scope="col">Actual Story Point</th>
+              <th scope="col">Consumed SP</th>
+              <th scope="col">Variance(%)</th>
+              <th scope="col">Story Maturity</th>
+              <th scope="col">Activity Start Date</th>
+              <th scope="col">Activity End Date</th>
+              <th scope="col">Resource</th>
+              <th scope="col">Percentage Completion</th>
+              <th scope="col">Accountable Hour</th>
+              <th scope="col">Reason of Variance</th>
+              <th scope="col">Corrective Measures</th>
+              <th scope="col">Risk If Any</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">
                 <input type="date" id="Start Date" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Start Date']" name="Start Date">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="End Date">End Date</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="date" id="End Date" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['End Date']" name="End Date">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Planned Bandwidth">Planned Bandwidth</label></dt>
-                <input type="number" id="Planned Bandwidth" class="form-control" [readonly]="!editable"
-                  [(ngModel)]="exist['value']['Planned Bandwidth']" name="Planned Bandwidth">
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-5 five-two">
-            <div class="row">
-              <div class="col-sm-6">
-                <dt><label for="Actual Bandwidth">Actual Bandwidth</label></dt>
-                <input type="number" id="Actual Bandwidth" class="form-control" [readonly]="!editable"
-                  [(ngModel)]="exist['value']['Actual Bandwidth']" name="Actual Bandwidth">
-              </div>
-              <div class="col-sm-6">
-                <dt><label for="User Story">User Story</label></dt>
+              </td>
+              <td contenteditable="true">
+                <input type="number" id="Planned Bandwitdh" class="form-control" [readonly]="!editable"
+                  [(ngModel)]="exist['value']['Planned Bandwitdh']" name="Planned Bandwitdh">
+              </td>
+              <td contenteditable="true">
+                <input type="number" id="Actual Bandwitdh" class="form-control" [readonly]="!editable"
+                  [(ngModel)]="exist['value']['Actual Bandwitdh']" name="Actual Bandwitdh">
+              </td>
+              <td contenteditable="true">
                 <input type="text" id="User Story" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['User Story']" name="User Story">
-              </div>
-            </div>
-          </div>
-        </div>​
-
-      </div>
-
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-7 five-three">
-            <div class="row">
-              <div class="col-sm-4">
-                <dt><label for="Story Type">Story Type</label></dt>
-                <select name="Story Type" id="Story Type" class="form-control" [disabled]="butDisabled"
+              </td>
+              <td contenteditable="true">
+                <select name="Story Type" id="Story Type" class="form-control"
                   [(ngModel)]="exist['value']['Story Type']">
                   <option value="bug">Bug</option>
                   <option value="story">Story</option>
@@ -288,9 +293,8 @@
                   <option value="subtask">Sub-task</option>
                   <option value="epic">Epic</option>
                 </select>
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Story Status">Story Status</label></dt>
+              </td>
+              <td contenteditable="true">
                 <select name="Story Status" id="Story Status" class="form-control"
                   [(ngModel)]="exist['value']['Story Status']">
                   <option value="done">Done</option>
@@ -302,11 +306,9 @@
                   <option value="readyForDev">Ready for dev</option>
                   <option value="inProgress">In Progress</option>
                 </select>
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="secret">Activity/Task</label></dt>
-                <select name="activity" id="activity" class="form-control" [disabled]="butDisabled"
-                  [(ngModel)]="exist['value']['activity']">
+              </td>
+              <td contenteditable="true">
+                <select name="activity" id="activity" class="form-control" [(ngModel)]="exist['value']['activity']">
                   <option value="anlysis">Anlysis</option>
                   <option value="build">Build</option>
                   <option value="unitTesting">Unit Testing</option>
@@ -316,13 +318,8 @@
                   <option value="idle">Idle</option>
                   <option value="deployment">Deployment</option>
                 </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-5 five-two">
-            <div class="row">
-              <div class="col-sm-6">
-                <dt><label for="Activity Status">Activity Status</label></dt>
+              </td>
+              <td contenteditable="true">
                 <select name="Activity Status" id="Activity Status" class="form-control"
                   [(ngModel)]="exist['value']['Activity Status']">
                   <option value="notStarted">Not Started</option>
@@ -330,133 +327,73 @@
                   <option value="inProgress">In Progress</option>
                   <option value="complete">Complete</option>
                 </select>
-              </div>
-              <div class="col-sm-6">
-                <dt><label for="Date">Date</label></dt>
-                <input type="date" id="Date" class="form-control" ngModel name="Date">
-              </div>
-            </div>
-          </div>
-        </div>​
-
-      </div>
-
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-7 five-three">
-            <div class="row">
-              <div class="col-sm-4">
-                <dt><label for="Planned Story Point">Planned Story Point</label></dt>
+              </td>
+              <td>
+                <input type="date" id="Date" class="form-control" [(ngModel)]="exist['value']['Date']" name="Date">
+              </td>
+              <td contenteditable="true">
                 <input type="number" id="Planned Story Point" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Planned Story Point']" name="Planned Story Point">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Actual Story Point">Actual Story Point</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="number" id="Actual Story Point" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Actual Story Point']" name="Actual Story Point">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Consumed SP">Consumed SP</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="number" id="Consumed SP" class="form-control" [(ngModel)]="exist['value']['Consumed SP']"
                   name="Consumed SP">
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-5 five-two">
-            <div class="row">
-              <div class="col-sm-6">
-                <dt><label for="variance">Variance (%)</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="number" id="variance" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['variance']" name="variance">
-              </div>
-              <div class="col-sm-6">
-                <dt><label for="Story Maturity">Story Maturity</label></dt>
-                <select name="Story Maturity" id="Story Maturity" class="form-control" [disabled]="butDisabled"
+              </td>
+              <td contenteditable="true">
+                <select name="Story Maturity" id="Story Maturity" class="form-control"
                   [(ngModel)]="exist['value']['Story Maturity']">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
-              </div>
-            </div>
-          </div>
-        </div>​
-
-      </div>
-
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-7 five-three">
-            <div class="row">
-              <div class="col-sm-4">
-                <dt><label for="Activity Start Date">Activity Start Date</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="date" id="Activity Start Date" class="form-control"
                   [(ngModel)]="exist['value']['Activity Start Date']" name="Activity Start Date">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Activity End Date">Activity End Date</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="date" id="Activity End Date" class="form-control"
                   [(ngModel)]="exist['value']['Activity End Date']" name="Activity End Date">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Resource">Resource</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="text" id="Resource" class="form-control" [(ngModel)]="exist['value']['Resource']"
                   name="Resource">
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-5 five-two">
-            <div class="row">
-              <div class="col-sm-6">
-                <dt><label for="Percentage Completion">Percentage Completion</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="number" id="Percentage Completion" class="form-control" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Percentage Completion']" name="Percentage Completion">
-              </div>
-              <div class="col-sm-6">
-                <dt><label for="Accountable Hour">Accountable Hour</label></dt>
-                <select name="Accountable Hour" id="Accountable Hour" class="form-control" [disabled]="butDisabled"
+              </td>
+              <td contenteditable="true">
+                <select name="Accountable Hour" id="Accountable Hour" class="form-control"
                   [(ngModel)]="exist['value']['Accountable Hour']">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
-              </div>
-            </div>
-          </div>
-        </div>​
-
-      </div>
-
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-7 five-three">
-            <div class="row">
-              <div class="col-sm-4">
-                <dt><label for="Reason of Variance">Reason of Variance</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="text" id="Reason of Variance" class="form-control"
                   [(ngModel)]="exist['value']['Reason of Variance']" name="Reason of Variance">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Corrective Measures">Corrective Measures</label></dt>
+              </td>
+              <td contenteditable="true">
                 <input type="text" id="Corrective Measures" class="form-control"
                   [(ngModel)]="exist['value']['Corrective Measures']" name="Corrective Measures">
-              </div>
-              <div class="col-sm-4">
-                <dt><label for="Risk If Any">Risk If Any</label></dt>
+              </td>
+              <td>
                 <input type="text" id="Risk If Any" class="form-control" [(ngModel)]="exist['value']['Risk If Any']"
                   name="Risk If Any">
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-5 five-two">
-            <div class="row">
-            </div>
-          </div>
-        </div>​
-
-      </div>
-
-      <div class="col-sm-12">
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <button type="submit" class="btn btn-success">Update</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>
