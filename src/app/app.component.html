@@ -2,6 +2,10 @@
   <mat-toolbar [ngClass]="newUser==true ? 'selected' : 'notselected'">
     <div class="row">
       <div class="col">
+        <img src="https://www.coorpacademy.com/wp-content/uploads/2018/06/Cap_logo_Slide.png" alt="Capgemini"
+          width="140" height="42">
+      </div>
+      <div class="col">
         <h4>Sprint Data</h4>
       </div>
       <div class="col">
@@ -11,7 +15,7 @@
       <div class="col">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary" type="button" (click)="existingUserDeatails()">Exist</button>
+            <button class="btn btn-outline-primary mr-1" type="button" (click)="existingUserDeatails()">Exist</button>
           </div>
           <input type="text" #existUser class="form-control" placeholder="UserId" aria-label=""
             aria-describedby="basic-addon1">
@@ -266,27 +270,27 @@
           <tbody>
             <tr>
               <td contenteditable="true">
-                <input type="date" id="Start Date" class="form-control" [readonly]="!editable"
+                <input type="date" id="Start Date" class="form-control size1" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Start Date']" name="Start Date">
               </td>
               <td contenteditable="true">
-                <input type="date" id="End Date" class="form-control" [readonly]="!editable"
+                <input type="date" id="End Date" class="form-control size1" [readonly]="!editable"
                   [(ngModel)]="exist['value']['End Date']" name="End Date">
               </td>
               <td contenteditable="true">
-                <input type="number" id="Planned Bandwitdh" class="form-control" [readonly]="!editable"
+                <input type="number" id="Planned Bandwitdh" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Planned Bandwitdh']" name="Planned Bandwitdh">
               </td>
               <td contenteditable="true">
-                <input type="number" id="Actual Bandwitdh" class="form-control" [readonly]="!editable"
+                <input type="number" id="Actual Bandwitdh" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Actual Bandwitdh']" name="Actual Bandwitdh">
               </td>
               <td contenteditable="true">
-                <input type="text" id="User Story" class="form-control" [readonly]="!editable"
+                <input type="text" id="User Story" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['User Story']" name="User Story">
               </td>
               <td contenteditable="true">
-                <select name="Story Type" id="Story Type" class="form-control"
+                <select name="Story Type" id="Story Type" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Story Type']">
                   <option value="bug">Bug</option>
                   <option value="story">Story</option>
@@ -296,7 +300,7 @@
                 </select>
               </td>
               <td contenteditable="true">
-                <select name="Story Status" id="Story Status" class="form-control"
+                <select name="Story Status" id="Story Status" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Story Status']">
                   <option value="done">Done</option>
                   <option value="uat">UAT</option>
@@ -309,7 +313,8 @@
                 </select>
               </td>
               <td contenteditable="true">
-                <select name="activity" id="activity" class="form-control" [(ngModel)]="exist['value']['activity']">
+                <select name="activity" id="activity" class="form-control sizeOfInput"
+                  [(ngModel)]="exist['value']['activity']">
                   <option value="anlysis">Anlysis</option>
                   <option value="build">Build</option>
                   <option value="unitTesting">Unit Testing</option>
@@ -321,7 +326,7 @@
                 </select>
               </td>
               <td contenteditable="true">
-                <select name="Activity Status" id="Activity Status" class="form-control"
+                <select name="Activity Status" id="Activity Status" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Activity Status']">
                   <option value="notStarted">Not Started</option>
                   <option value="awaitingClarification">Awaiting Clarification</option>
@@ -330,65 +335,66 @@
                 </select>
               </td>
               <td>
-                <input type="date" id="Date" class="form-control" [(ngModel)]="exist['value']['Date']" name="Date">
+                <input type="date" id="Date" class="form-control size1" [(ngModel)]="exist['value']['Date']"
+                  name="Date">
               </td>
               <td contenteditable="true">
-                <input type="number" id="Planned Story Point" class="form-control" [readonly]="!editable"
+                <input type="number" id="Planned Story Point" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Planned Story Point']" name="Planned Story Point">
               </td>
               <td contenteditable="true">
-                <input type="number" id="Actual Story Point" class="form-control" [readonly]="!editable"
+                <input type="number" id="Actual Story Point" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Actual Story Point']" name="Actual Story Point">
               </td>
               <td contenteditable="true">
-                <input type="number" id="Consumed SP" class="form-control" [(ngModel)]="exist['value']['Consumed SP']"
-                  name="Consumed SP">
+                <input type="number" id="Consumed SP" class="form-control sizeOfInput"
+                  [(ngModel)]="exist['value']['Consumed SP']" name="Consumed SP">
               </td>
               <td contenteditable="true">
-                <input type="number" id="variance" class="form-control" [readonly]="!editable"
+                <input type="number" id="variance" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['variance']" name="variance">
               </td>
               <td contenteditable="true">
-                <select name="Story Maturity" id="Story Maturity" class="form-control"
+                <select name="Story Maturity" id="Story Maturity" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Story Maturity']">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
               </td>
               <td contenteditable="true">
-                <input type="date" id="Activity Start Date" class="form-control"
+                <input type="date" id="Activity Start Date" class="form-control size1"
                   [(ngModel)]="exist['value']['Activity Start Date']" name="Activity Start Date">
               </td>
               <td contenteditable="true">
-                <input type="date" id="Activity End Date" class="form-control"
+                <input type="date" id="Activity End Date" class="form-control size1"
                   [(ngModel)]="exist['value']['Activity End Date']" name="Activity End Date">
               </td>
               <td contenteditable="true">
-                <input type="text" id="Resource" class="form-control" [(ngModel)]="exist['value']['Resource']"
-                  name="Resource">
+                <input type="text" id="Resource" class="form-control sizeOfInput"
+                  [(ngModel)]="exist['value']['Resource']" name="Resource">
               </td>
               <td contenteditable="true">
-                <input type="number" id="Percentage Completion" class="form-control" [readonly]="!editable"
+                <input type="number" id="Percentage Completion" class="form-control sizeOfInput" [readonly]="!editable"
                   [(ngModel)]="exist['value']['Percentage Completion']" name="Percentage Completion">
               </td>
               <td contenteditable="true">
-                <select name="Accountable Hour" id="Accountable Hour" class="form-control"
+                <select name="Accountable Hour" id="Accountable Hour" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Accountable Hour']">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
               </td>
               <td contenteditable="true">
-                <input type="text" id="Reason of Variance" class="form-control"
+                <input type="text" id="Reason of Variance" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Reason of Variance']" name="Reason of Variance">
               </td>
               <td contenteditable="true">
-                <input type="text" id="Corrective Measures" class="form-control"
+                <input type="text" id="Corrective Measures" class="form-control sizeOfInput"
                   [(ngModel)]="exist['value']['Corrective Measures']" name="Corrective Measures">
               </td>
               <td>
-                <input type="text" id="Risk If Any" class="form-control" [(ngModel)]="exist['value']['Risk If Any']"
-                  name="Risk If Any">
+                <input type="text" id="Risk If Any" class="form-control sizeOfInput"
+                  [(ngModel)]="exist['value']['Risk If Any']" name="Risk If Any">
               </td>
             </tr>
           </tbody>
@@ -398,7 +404,7 @@
             <button type="submit" class="btn btn-success">Update</button>
           </div>
           <div class="col">
-            <button (click)="exportAsXLSX()" class="btn btn-success">Export to Excel</button>
+            <button (click)="exportAsXLSX()" class="btn btn-outline-primary mr-1">Export to Excel</button>
           </div>
         </div>
       </form>
