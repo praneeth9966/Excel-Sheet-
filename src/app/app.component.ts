@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   public responseKey: any = [];
   public excelDetails: any = [];
   public result = {};
+  public hide =false;
 
   constructor(private dataService: DataServiceService, private excelService: ExcelService) { }
 
@@ -41,10 +42,12 @@ export class AppComponent implements OnInit {
 
   more() {
     this.moreFields = true;
+    this.hide=true;
   }
 
   less(){
     this.moreFields = false;
+    this.hide=false;
   }
 
   refresh(): void {
