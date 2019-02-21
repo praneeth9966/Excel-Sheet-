@@ -43,6 +43,10 @@ export class AppComponent implements OnInit {
     this.moreFields = true;
   }
 
+  less(){
+    this.moreFields = false;
+  }
+
   refresh(): void {
     window.location.reload();
   }
