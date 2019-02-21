@@ -8,12 +8,11 @@ import { ExcelService } from './Services/excel-service/excel.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
 
+export class AppComponent implements OnInit {
   title = 'my-assignment';
   defaultActivity = ""
   defaultStoryMaturity = ""
-
   @ViewChild('sprintData') formSprintData: NgForm;
   @ViewChild('existUser') existUserData: ElementRef;
   @ViewChild('newdata') updatedData: NgForm;
@@ -24,11 +23,13 @@ export class AppComponent implements OnInit {
   public userStory;
   public userStory1;
   public newUser = true;
+  public moreFields = false;
   public existDeatails: any = [];
   public updateDeatails: any = [];
   public responseKey: any = [];
   public excelDetails: any = [];
   public result = {};
+
   constructor(private dataService: DataServiceService, private excelService: ExcelService) { }
 
   ngOnInit() {
@@ -36,6 +37,10 @@ export class AppComponent implements OnInit {
 
   newUserDeatails() {
     this.newUser = true;
+  }
+
+  more() {
+    this.moreFields = true;
   }
 
   refresh(): void {
@@ -71,26 +76,13 @@ export class AppComponent implements OnInit {
             console.log(this.mapped[i]['value']['Story Maturity']);
             this.updateDeatails = JSON.stringify(this.updatedData.value);
             console.log(this.updateDeatails);
-            this.mapped[i]['value']['Start Date'] = this.updatedData['value']['Start Date']
-            this.mapped[i]['value']['End Date'] = this.updatedData['value']['End Date']
-            this.mapped[i]['value']['Planned Bandwidth'] = this.updatedData['value']['Planned Bandwidth']
-            this.mapped[i]['value']['Actual Bandwidth'] = this.updatedData['value']['Actual Bandwidth']
-            this.mapped[i]['value']['User Story'] = this.updatedData['value']['User Story']
-            this.mapped[i]['value']['Story Type'] = this.updatedData['value']['Story Type']
             this.mapped[i]['value']['Story Status'] = this.updatedData['value']['Story Status']
-            this.mapped[i]['value']['activity'] = this.updatedData['value']['activity']
             this.mapped[i]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
             this.mapped[i]['value']['Date'] = this.updatedData['value']['Date']
-            this.mapped[i]['value']['Planned Story Point'] = this.updatedData['value']['Planned Story Point']
-            this.mapped[i]['value']['Actual Story Point'] = this.updatedData['value']['Actual Story Point']
             this.mapped[i]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
-            this.mapped[i]['value']['variance'] = this.updatedData['value']['variance']
-            this.mapped[i]['value']['Story Maturity'] = this.updatedData['value']['Story Maturity']
             this.mapped[i]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
             this.mapped[i]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
             this.mapped[i]['value']['Resource'] = this.updatedData['value']['Resource']
-            this.mapped[i]['value']['Percentage Completion'] = this.updatedData['value']['Percentage Completion']
-            this.mapped[i]['value']['Accountable Hour'] = this.updatedData['value']['Accountable Hour']
             this.mapped[i]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
             this.mapped[i]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
             this.mapped[i]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']

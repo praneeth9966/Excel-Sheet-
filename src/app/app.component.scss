@@ -15,7 +15,7 @@ input.ng-invalid.ng-touched {
     padding-right:0px;
     color: white;
     font-family: Georgia, serif;
-    width: 202%
+    width: 100%
 }
 
 .sizeOfInput{
@@ -28,4 +28,11 @@ input.ng-invalid.ng-touched {
 
 .size2{
     width: 70px;
+}
+
+.star{
+    label:after {
+        content: " *";
+        color: #ff0000;
+    }
 }
