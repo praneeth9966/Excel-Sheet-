@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, ElementRef, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataServiceService } from './Services/data-service.service';
+// import {MatSnackBar} from '@angular/material';
 import { ExcelService } from './Services/excel-service/excel.service';
 
 @Component({
@@ -29,9 +30,13 @@ export class AppComponent implements OnInit {
   public responseKey: any = [];
   public excelDetails: any = [];
   public result = {};
-  public hide =false;
+  public hide = false;
+  public exportData;
+  public exportNewData: any = [];
 
-  constructor(private dataService: DataServiceService, private excelService: ExcelService) { }
+
+  constructor(private dataService: DataServiceService,
+    private excelService: ExcelService) { }
 
   ngOnInit() {
   }
@@ -42,12 +47,12 @@ export class AppComponent implements OnInit {
 
   more() {
     this.moreFields = true;
-    this.hide=true;
+    this.hide = true;
   }
 
-  less(){
+  less() {
     this.moreFields = false;
-    this.hide=false;
+    this.hide = false;
   }
 
   refresh(): void {
@@ -63,6 +68,9 @@ export class AppComponent implements OnInit {
           console.log(response)
           this.responseKey.push(response)
           console.log(this.responseKey);
+          // this.snackBar.open("Data", "Submitted", {
+          //   duration: 1000
+          // })
         },
         (error) => console.log(error)
       );
@@ -138,10 +146,37 @@ export class AppComponent implements OnInit {
   }
 
   exportAsXLSX() {
+    console.log(this.mapped);
+    console.log(this.mapped[0]['value']['Start Date']);
     for (var i = 0; i < this.mapped.length; i++) {
-      this.excelDetails.push(this.mapped[i]['value'])
-      console.log(this.excelDetails);
+      this.exportData = {
+        StartDate: this.mapped[i]['value']['Start Date'],
+        EndDate: this.mapped[i]['value']['End Date'],
+        PlannedBandwidth: this.mapped[i]['value']['Planned Bandwitdh'],
+        ActualBandwidth: this.mapped[i]['value']['Actual Bandwitdh'],
+        UserStory: this.mapped[i]['value']['User Story'],
+        StoryType: this.mapped[i]['value']['Story Type'],
+        StoryStatus: this.mapped[i]['value']['Story Status'],
+        Activity: this.mapped[i]['value']['activity'],
+        ActivityStatus: this.mapped[i]['value']['Activity Status'],
+        Date: this.mapped[i]['value']['Date'],
+        PlannedStoryPoint: this.mapped[i]['value']['Planned Story Point'],
+        ActualStoryPoint: this.mapped[i]['value']['Actual Story Point'],
+        ConsumedSP: this.mapped[i]['value']['Consumed SP'],
+        Variance: this.mapped[i]['value']['variance'],
+        StoryMaturity: this.mapped[i]['value']['Story Maturity'],
+        ActivityStartDate: this.mapped[i]['value']['Activity Start Date'],
+        ActivityEndDate: this.mapped[i]['value']['Activity End Date'],
+        Resource: this.mapped[i]['value']['Resource'],
+        PercentageComletion: this.mapped[i]['value']['Percentage Completion'],
+        AccountableHour: this.mapped[i]['value']['Accountable Hour'],
+        ReasonOfVariance: this.mapped[i]['value']['Reason of Variance'],
+        CorrectiveMeasures: this.mapped[i]['value']['Corrective Measures'],
+        RiskIfAny: this.mapped[i]['value']['Risk If Any'],
+      }
+      this.excelDetails.push(this.exportData)
     }
+    console.log(this.excelDetails);
     this.excelService.exportAsExcelFile(this.excelDetails, 'sample');
   }
 

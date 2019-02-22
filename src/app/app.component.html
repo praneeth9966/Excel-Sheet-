@@ -330,9 +330,6 @@
         </table>
         <div class="row">
           <div class="col">
-            <button type="submit" class="btn btn-success">Update</button>
-          </div>
-          <div class="col">
             <button (click)="exportAsXLSX()" class="btn btn-outline-primary mr-1">Export to Excel</button>
           </div>
           <div class="col" *ngIf="hide==false">
@@ -340,7 +337,10 @@
           </div>
           <div class="col" *ngIf="hide==true">
               <button (click)="less()" class="btn btn-outline-primary mr-1">Less</button>
-            </div>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
         </div>
       </form>
 
