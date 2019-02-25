@@ -246,8 +246,8 @@
 
 
 <!------------------------------------------ ExistingUser Starts ---------------------------------------->
-  <div *ngFor="let exist of existDeatails">
-    <div class="container-fluid" *ngIf="newUser==false">
+<div class="container-fluid" *ngIf="newUser==false">
+<div *ngFor="let exist of existDeatails1"> 
       <form (ngSubmit)="update()" #newdata="ngForm">
         <table class="table">
           <thead>
@@ -269,7 +269,7 @@
 
               <td contenteditable="true">
                 <select name="Story Status" id="Story Status" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['value']['Story Status']">
+                  [(ngModel)]="exist['Story Status']">
                   <option value="done">Done</option>
                   <option value="uat">UAT</option>
                   <option value="peerReview">Peer Review</option>
@@ -283,7 +283,7 @@
 
               <td contenteditable="true">
                 <select name="Activity Status" id="Activity Status" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['value']['Activity Status']">
+                  [(ngModel)]="exist['Activity Status']">
                   <option value="notStarted">Not Started</option>
                   <option value="awaitingClarification">Awaiting Clarification</option>
                   <option value="inProgress">In Progress</option>
@@ -291,61 +291,163 @@
                 </select>
               </td>
               <td>
-                <input type="date" id="Date" class="form-control size1" [(ngModel)]="exist['value']['Date']"
+                <input type="date" id="Date" class="form-control size1" [(ngModel)]="exist['Date']"
                   name="Date">
               </td>
 
               <td contenteditable="true">
                 <input type="number" id="Consumed SP" class="form-control size2"
-                  [(ngModel)]="exist['value']['Consumed SP']" name="Consumed SP">
+                  [(ngModel)]="exist['Consumed SP']" name="Consumed SP">
               </td>
 
               <td contenteditable="true">
                 <input type="date" id="Activity Start Date" class="form-control size1"
-                  [(ngModel)]="exist['value']['Activity Start Date']" name="Activity Start Date">
+                  [(ngModel)]="exist['Activity Start Date']" name="Activity Start Date">
               </td>
               <td contenteditable="true">
                 <input type="date" id="Activity End Date" class="form-control size1"
-                  [(ngModel)]="exist['value']['Activity End Date']" name="Activity End Date">
+                  [(ngModel)]="exist['Activity End Date']" name="Activity End Date">
               </td>
               <td contenteditable="true">
                 <input type="text" id="Resource" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['value']['Resource']" name="Resource">
+                  [(ngModel)]="exist['Resource']" name="Resource">
               </td>
 
               <td contenteditable="true">
                 <input type="text" id="Reason of Variance" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['value']['Reason of Variance']" name="Reason of Variance">
+                  [(ngModel)]="exist['Reason of Variance']" name="Reason of Variance">
               </td>
               <td contenteditable="true">
                 <input type="text" id="Corrective Measures" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['value']['Corrective Measures']" name="Corrective Measures">
+                  [(ngModel)]="exist['Corrective Measures']" name="Corrective Measures">
               </td>
               <td>
                 <input type="text" id="Risk If Any" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['value']['Risk If Any']" name="Risk If Any">
+                  [(ngModel)]="exist['Risk If Any']" name="Risk If Any">
               </td>
             </tr>
           </tbody>
         </table>
         <div class="row">
-          <div class="col">
+          <!-- <div class="col">
             <button (click)="exportAsXLSX()" class="btn btn-outline-primary mr-1">Export to Excel</button>
-          </div>
-          <div class="col" *ngIf="hide==false">
+          </div> -->
+          <!-- <div class="col" *ngIf="hide==false">
             <button (click)="more()" class="btn btn-outline-primary mr-1">More</button>
           </div>
           <div class="col" *ngIf="hide==true">
               <button (click)="less()" class="btn btn-outline-primary mr-1">Less</button>
-          </div>
+          </div> -->
           <div class="col">
-            <button type="submit" class="btn btn-success">Update</button>
+            <button type="submit" class="btn btn-success pull-right">Update</button>
           </div>
         </div>
       </form>
-
+    </div>
 <!------------------------------------------ MoreDetails of ExistingUser Starts ---------------------------->
-      <div *ngIf="moreFields==true">
+<!-- <div *ngIf="moreFields==true"> -->
+<div *ngFor="let exist of existDeatails"> 
+  <form (ngSubmit)="update()" #newdata="ngForm">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Story Status</th>
+          <th scope="col">Activity Status</th>
+          <th scope="col">Date</th>
+          <th scope="col">Consumed SP</th>
+          <th scope="col">Activity Start Date</th>
+          <th scope="col">Activity End Date</th>
+          <th scope="col">Resource</th>
+          <th scope="col">Reason of Variance</th>
+          <th scope="col">Corrective Measures</th>
+          <th scope="col">Risk If Any</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+          <td contenteditable="true">
+            <select name="Story Status" id="Story Status" class="form-control sizeOfInput" [disabled]="butDisabled"
+              [(ngModel)]="exist['value']['Story Status']">
+              <option value="done">Done</option>
+              <option value="uat">UAT</option>
+              <option value="peerReview">Peer Review</option>
+              <option value="deskCheck">Desk check</option>
+              <option value="open">Open</option>
+              <option value="analysis">Analysis</option>
+              <option value="readyForDev">Ready for dev</option>
+              <option value="inProgress">In Progress</option>
+            </select>
+          </td>
+
+          <td contenteditable="true">
+            <select name="Activity Status" id="Activity Status" class="form-control sizeOfInput" [disabled]="butDisabled"
+              [(ngModel)]="exist['value']['Activity Status']">
+              <option value="notStarted">Not Started</option>
+              <option value="awaitingClarification">Awaiting Clarification</option>
+              <option value="inProgress">In Progress</option>
+              <option value="complete">Complete</option>
+            </select>
+          </td>
+          <td>
+            <input type="date" id="Date" class="form-control size1" [(ngModel)]="exist['value']['Date']"
+              name="Date" [readonly]="!editable">
+          </td>
+
+          <td contenteditable="true">
+            <input type="number" id="Consumed SP" class="form-control size2"
+              [(ngModel)]="exist['value']['Consumed SP']" name="Consumed SP" [readonly]="!editable">
+          </td>
+
+          <td contenteditable="true">
+            <input type="date" id="Activity Start Date" class="form-control size1"
+              [(ngModel)]="exist['value']['Activity Start Date']" name="Activity Start Date" [readonly]="!editable">
+          </td>
+          <td contenteditable="true">
+            <input type="date" id="Activity End Date" class="form-control size1"
+              [(ngModel)]="exist['value']['Activity End Date']" name="Activity End Date" [readonly]="!editable">
+          </td>
+          <td contenteditable="true">
+            <input type="text" id="Resource" class="form-control sizeOfInput"
+              [(ngModel)]="exist['value']['Resource']" name="Resource" [readonly]="!editable">
+          </td>
+
+          <td contenteditable="true">
+            <input type="text" id="Reason of Variance" class="form-control sizeOfInput"
+              [(ngModel)]="exist['value']['Reason of Variance']" name="Reason of Variance" [readonly]="!editable">
+          </td>
+          <td contenteditable="true">
+            <input type="text" id="Corrective Measures" class="form-control sizeOfInput"
+              [(ngModel)]="exist['value']['Corrective Measures']" name="Corrective Measures" [readonly]="!editable">
+          </td>
+          <td>
+            <input type="text" id="Risk If Any" class="form-control sizeOfInput"
+              [(ngModel)]="exist['value']['Risk If Any']" name="Risk If Any" [readonly]="!editable">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <!-- <div class="col">
+        <button (click)="exportAsXLSX()" class="btn btn-outline-primary mr-1">Export to Excel</button>
+      </div> -->
+      <!-- <div class="col" *ngIf="hide==false">
+        <button (click)="more()" class="btn btn-outline-primary mr-1">More</button>
+      </div>
+      <div class="col" *ngIf="hide==true">
+          <button (click)="less()" class="btn btn-outline-primary mr-1">Less</button>
+      </div> -->
+      <!-- <div class="col">
+        <button type="submit" class="btn btn-success">Update</button>
+      </div> -->
+    </div>
+  </form>
+</div>
+<!-- </div> -->
+
+
+
+<!-- <div *ngIf="moreFields==true">
         <hr>
         <div class="row">
           <div class="col-sm-2">
@@ -574,9 +676,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 <!------------------------------------------ MoreDetails of ExistingUser Ends ---------------------------->
-    </div>
+    
   </div>
 <!------------------------------------------ ExistingUser Ends ---------------------------------------->
 </div>

@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   public newUser = true;
   public moreFields = false;
   public existDeatails: any = [];
+  public existDeatails1: any = [];
   public updateDeatails: any = [];
   public responseKey: any = [];
   public excelDetails: any = [];
@@ -75,6 +76,71 @@ export class AppComponent implements OnInit {
         (error) => console.log(error)
       );
   }
+
+  // update() {
+  //   console.log(this.updatedData['value']['Story Maturity']);
+  //   this.dataService.getData().subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
+  //       console.log(this.mapped);
+
+  //       for (var i = this.mapped.length - 1; i >= 0; i--) {
+  //         this.userStory1 = this.mapped[i]['value']['User Story'];
+  //         console.log(this.userStory1);
+  //         if (this.existUserData.nativeElement.value === this.userStory1) {
+  //           this.newUser = false;
+  //           this.userStory = this.userStory1;
+  //           this.existDeatails.push(this.mapped[i]);
+  //           console.log(this.existDeatails);
+  //           // break;
+  //         }
+  //       }
+
+  //       for (var i = 0; i < this.existDeatails.length; i++) {
+  //         this.userStory1 = this.existDeatails[i]['value']['User Story'];
+  //         console.log(this.userStory1);
+  //         if (this.existUserData.nativeElement.value === this.userStory1) {
+  //           console.log(this.updatedData);
+  //           console.log(this.existDeatails[i]['value']['Story Maturity']);
+           
+  //           this.existDeatails[i]['value']['Story Status'] = this.updatedData['value']['Story Status']
+  //           this.existDeatails[i]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
+  //           this.existDeatails[i]['value']['Date'] = this.updatedData['value']['Date']
+  //           this.existDeatails[i]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
+  //           this.existDeatails[i]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
+  //           this.existDeatails[i]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
+  //           this.existDeatails[i]['value']['Resource'] = this.updatedData['value']['Resource']
+  //           this.existDeatails[i]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
+  //           this.existDeatails[i]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
+  //           this.existDeatails[i]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']
+  //           console.log(this.existDeatails);
+
+  //           for (var i = 0; i < this.mapped.length; i++) {
+  //             if (this.mapped[i]['value']['User Story'] === this.existDeatails[i]['value']['User Story']) {
+  //               this.mapped[i]['value']=this.existDeatails[i]['value']
+  //               console.log(this.mapped);
+                
+  //             }
+  //           }
+
+  //           for (var i = 0; i < this.mapped.length; i++) {
+  //             this.result[this.mapped[i].type] = this.mapped[i].value;
+  //           }
+
+  //           console.log(this.result);
+  //           this.dataService.updateData(this.result)
+  //             .subscribe(
+  //               (response) => console.log(response),
+  //               (error) => console.log(error)
+  //             );
+  //           this.newUser = false;
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   )
+  // }
 
   update() {
     console.log(this.updatedData['value']['Story Maturity']);
@@ -135,12 +201,16 @@ export class AppComponent implements OnInit {
             this.userStory = this.userStory1;
             this.existDeatails.push(this.mapped[i]);
             console.log(this.existDeatails);
-            break;
+            // break;
           }
         }
+        this.existDeatails1.push(this.existDeatails[0]['value']);
+        console.log(this.existDeatails1);
+
         if (this.existDeatails.length == 0) {
           alert("Please enter Valid User Story");
         }
+        
       }
     )
   }
