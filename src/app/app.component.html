@@ -248,7 +248,7 @@
 <!------------------------------------------ ExistingUser Starts ---------------------------------------->
 <div class="container-fluid" *ngIf="newUser==false">
 <div *ngFor="let exist of existDeatails1"> 
-      <form (ngSubmit)="update()" #newdata="ngForm">
+      <form (ngSubmit)="update(exist['type'])" #newdata="ngForm">
         <table class="table">
           <thead>
             <tr>
@@ -269,7 +269,7 @@
 
               <td contenteditable="true">
                 <select name="Story Status" id="Story Status" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['Story Status']">
+                  [(ngModel)]="exist['value']['Story Status']">
                   <option value="done">Done</option>
                   <option value="uat">UAT</option>
                   <option value="peerReview">Peer Review</option>
@@ -283,7 +283,7 @@
 
               <td contenteditable="true">
                 <select name="Activity Status" id="Activity Status" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['Activity Status']">
+                  [(ngModel)]="exist['value']['Activity Status']">
                   <option value="notStarted">Not Started</option>
                   <option value="awaitingClarification">Awaiting Clarification</option>
                   <option value="inProgress">In Progress</option>
@@ -291,39 +291,39 @@
                 </select>
               </td>
               <td>
-                <input type="date" id="Date" class="form-control size1" [(ngModel)]="exist['Date']"
+                <input id="Date" class="form-control size1" [(ngModel)]="today"
                   name="Date">
               </td>
 
               <td contenteditable="true">
                 <input type="number" id="Consumed SP" class="form-control size2"
-                  [(ngModel)]="exist['Consumed SP']" name="Consumed SP">
+                  [(ngModel)]="exist['value']['Consumed SP']" name="Consumed SP">
               </td>
 
               <td contenteditable="true">
                 <input type="date" id="Activity Start Date" class="form-control size1"
-                  [(ngModel)]="exist['Activity Start Date']" name="Activity Start Date">
+                  [(ngModel)]="exist['value']['Activity Start Date']" name="Activity Start Date">
               </td>
               <td contenteditable="true">
                 <input type="date" id="Activity End Date" class="form-control size1"
-                  [(ngModel)]="exist['Activity End Date']" name="Activity End Date">
+                  [(ngModel)]="exist['value']['Activity End Date']" name="Activity End Date">
               </td>
               <td contenteditable="true">
                 <input type="text" id="Resource" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['Resource']" name="Resource">
+                  [(ngModel)]="exist['value']['Resource']" name="Resource">
               </td>
 
               <td contenteditable="true">
                 <input type="text" id="Reason of Variance" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['Reason of Variance']" name="Reason of Variance">
+                  [(ngModel)]="exist['value']['Reason of Variance']" name="Reason of Variance">
               </td>
               <td contenteditable="true">
                 <input type="text" id="Corrective Measures" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['Corrective Measures']" name="Corrective Measures">
+                  [(ngModel)]="exist['value']['Corrective Measures']" name="Corrective Measures">
               </td>
               <td>
                 <input type="text" id="Risk If Any" class="form-control sizeOfInput"
-                  [(ngModel)]="exist['Risk If Any']" name="Risk If Any">
+                  [(ngModel)]="exist['value']['Risk If Any']" name="Risk If Any">
               </td>
             </tr>
           </tbody>
@@ -390,7 +390,7 @@
             </select>
           </td>
           <td>
-            <input type="date" id="Date" class="form-control size1" [(ngModel)]="exist['value']['Date']"
+            <input type="date" id="Date" class="form-control size1" [(ngModel)]="today"
               name="Date" [readonly]="!editable">
           </td>
 

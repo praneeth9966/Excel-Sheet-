@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DataServiceService } from './Services/data-service.service';
 // import {MatSnackBar} from '@angular/material';
 import { ExcelService } from './Services/excel-service/excel.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   public moreFields = false;
   public existDeatails: any = [];
   public existDeatails1: any = [];
+  public updateExistDeatails: any = [];
   public updateDeatails: any = [];
   public responseKey: any = [];
   public excelDetails: any = [];
@@ -34,12 +36,19 @@ export class AppComponent implements OnInit {
   public hide = false;
   public exportData;
   public exportNewData: any = [];
-
-
+  public myDate=new Date();
+    public today='';
   constructor(private dataService: DataServiceService,
-    private excelService: ExcelService) { }
+    private excelService: ExcelService,private datePipe: DatePipe) {
+      this.today = this.datePipe.transform(this.myDate, 'MM-dd-yyyy');
+      console.log( this.today);
+      
+     }
 
   ngOnInit() {
+    // var myDate = new Date();
+    // this.today = new Date();
+    // console.log( this.today);
   }
 
   newUserDeatails() {
@@ -77,6 +86,60 @@ export class AppComponent implements OnInit {
       );
   }
 
+  update(type) {
+    console.log(type);
+    console.log(this.updatedData['value']['Story Maturity']);
+    this.dataService.getData().subscribe(
+      (response) => {
+        console.log(response);
+        this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
+        console.log(this.mapped);
+
+        for (var i = this.mapped.length - 1; i >= 0; i--) {
+          this.userStory1 = this.mapped[i]['value']['User Story'];
+          console.log(this.userStory1);
+          if (this.existUserData.nativeElement.value === this.userStory1) {
+            this.newUser = false;
+            this.userStory = this.userStory1;
+            this.updateExistDeatails.push(this.mapped[i]);
+          }
+        }
+        console.log(this.updateExistDeatails);
+
+        for (var j = 0; j < this.mapped.length; j++) {
+
+          console.log(this.mapped[j]['type']);
+          if (type === this.mapped[j]['type']) {
+            console.log(this.updatedData);
+            this.mapped[j]['value']['Story Status'] = this.updatedData['value']['Story Status']
+            this.mapped[j]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
+            this.mapped[j]['value']['Date'] = this.updatedData['value']['Date']
+            this.mapped[j]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
+            this.mapped[j]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
+            this.mapped[j]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
+            this.mapped[j]['value']['Resource'] = this.updatedData['value']['Resource']
+            this.mapped[j]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
+            this.mapped[j]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
+            this.mapped[j]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']
+            console.log(this.mapped);
+
+            for (var i = 0; i < this.mapped.length; i++) {
+              this.result[this.mapped[i].type] = this.mapped[i].value;
+            }
+
+            console.log(this.result);
+            this.dataService.updateData(this.result)
+              .subscribe(
+                (response) => console.log(response),
+                (error) => console.log(error)
+              );
+            this.newUser = false;
+          }
+        }
+      }
+    )
+  }
+
   // update() {
   //   console.log(this.updatedData['value']['Story Maturity']);
   //   this.dataService.getData().subscribe(
@@ -84,50 +147,28 @@ export class AppComponent implements OnInit {
   //       console.log(response);
   //       this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
   //       console.log(this.mapped);
-
-  //       for (var i = this.mapped.length - 1; i >= 0; i--) {
+  //       for (var i = 0; i < this.mapped.length; i++) {
   //         this.userStory1 = this.mapped[i]['value']['User Story'];
   //         console.log(this.userStory1);
   //         if (this.existUserData.nativeElement.value === this.userStory1) {
-  //           this.newUser = false;
-  //           this.userStory = this.userStory1;
-  //           this.existDeatails.push(this.mapped[i]);
-  //           console.log(this.existDeatails);
-  //           // break;
-  //         }
-  //       }
-
-  //       for (var i = 0; i < this.existDeatails.length; i++) {
-  //         this.userStory1 = this.existDeatails[i]['value']['User Story'];
-  //         console.log(this.userStory1);
-  //         if (this.existUserData.nativeElement.value === this.userStory1) {
   //           console.log(this.updatedData);
-  //           console.log(this.existDeatails[i]['value']['Story Maturity']);
-           
-  //           this.existDeatails[i]['value']['Story Status'] = this.updatedData['value']['Story Status']
-  //           this.existDeatails[i]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
-  //           this.existDeatails[i]['value']['Date'] = this.updatedData['value']['Date']
-  //           this.existDeatails[i]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
-  //           this.existDeatails[i]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
-  //           this.existDeatails[i]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
-  //           this.existDeatails[i]['value']['Resource'] = this.updatedData['value']['Resource']
-  //           this.existDeatails[i]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
-  //           this.existDeatails[i]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
-  //           this.existDeatails[i]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']
-  //           console.log(this.existDeatails);
-
-  //           for (var i = 0; i < this.mapped.length; i++) {
-  //             if (this.mapped[i]['value']['User Story'] === this.existDeatails[i]['value']['User Story']) {
-  //               this.mapped[i]['value']=this.existDeatails[i]['value']
-  //               console.log(this.mapped);
-                
-  //             }
-  //           }
-
+  //           console.log(this.mapped[i]['value']['Story Maturity']);
+  //           this.updateDeatails = JSON.stringify(this.updatedData.value);
+  //           console.log(this.updateDeatails);
+  //           this.mapped[i]['value']['Story Status'] = this.updatedData['value']['Story Status']
+  //           this.mapped[i]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
+  //           this.mapped[i]['value']['Date'] = this.updatedData['value']['Date']
+  //           this.mapped[i]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
+  //           this.mapped[i]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
+  //           this.mapped[i]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
+  //           this.mapped[i]['value']['Resource'] = this.updatedData['value']['Resource']
+  //           this.mapped[i]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
+  //           this.mapped[i]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
+  //           this.mapped[i]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']
+  //           console.log(this.mapped);
   //           for (var i = 0; i < this.mapped.length; i++) {
   //             this.result[this.mapped[i].type] = this.mapped[i].value;
   //           }
-
   //           console.log(this.result);
   //           this.dataService.updateData(this.result)
   //             .subscribe(
@@ -141,49 +182,6 @@ export class AppComponent implements OnInit {
   //     }
   //   )
   // }
-
-  update() {
-    console.log(this.updatedData['value']['Story Maturity']);
-    this.dataService.getData().subscribe(
-      (response) => {
-        console.log(response);
-        this.mapped = Object.keys(response).map(key => ({ type: key, value: response[key] }))
-        console.log(this.mapped);
-        for (var i = 0; i < this.mapped.length; i++) {
-          this.userStory1 = this.mapped[i]['value']['User Story'];
-          console.log(this.userStory1);
-          if (this.existUserData.nativeElement.value === this.userStory1) {
-            console.log(this.updatedData);
-            console.log(this.mapped[i]['value']['Story Maturity']);
-            this.updateDeatails = JSON.stringify(this.updatedData.value);
-            console.log(this.updateDeatails);
-            this.mapped[i]['value']['Story Status'] = this.updatedData['value']['Story Status']
-            this.mapped[i]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
-            this.mapped[i]['value']['Date'] = this.updatedData['value']['Date']
-            this.mapped[i]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
-            this.mapped[i]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
-            this.mapped[i]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
-            this.mapped[i]['value']['Resource'] = this.updatedData['value']['Resource']
-            this.mapped[i]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
-            this.mapped[i]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
-            this.mapped[i]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']
-            console.log(this.mapped);
-            for (var i = 0; i < this.mapped.length; i++) {
-              this.result[this.mapped[i].type] = this.mapped[i].value;
-            }
-            console.log(this.result);
-            this.dataService.updateData(this.result)
-              .subscribe(
-                (response) => console.log(response),
-                (error) => console.log(error)
-              );
-            this.newUser = false;
-            break;
-          }
-        }
-      }
-    )
-  }
 
   existingUserDeatails() {
     console.log(this.existUserData.nativeElement.value);
@@ -204,13 +202,13 @@ export class AppComponent implements OnInit {
             // break;
           }
         }
-        this.existDeatails1.push(this.existDeatails[0]['value']);
+        this.existDeatails1.push(this.existDeatails[0]);
         console.log(this.existDeatails1);
 
         if (this.existDeatails.length == 0) {
           alert("Please enter Valid User Story");
         }
-        
+
       }
     )
   }
