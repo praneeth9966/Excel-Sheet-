@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   @ViewChild('sprintData') formSprintData: NgForm;
   @ViewChild('existUser') existUserData: ElementRef;
   @ViewChild('newdata') updatedData: NgForm;
+  @ViewChild('newdata1') updatedData1: NgForm;
   @Input() editable: boolean = false;
   butDisabled: boolean = true;
   public data: any = [];
@@ -88,7 +89,7 @@ export class AppComponent implements OnInit {
 
   update(type) {
     console.log(type);
-    console.log(this.updatedData['value']['Story Maturity']);
+    // console.log(this.updatedData['value']['Story Maturity']);
     this.dataService.getData().subscribe(
       (response) => {
         console.log(response);
@@ -110,17 +111,17 @@ export class AppComponent implements OnInit {
 
           console.log(this.mapped[j]['type']);
           if (type === this.mapped[j]['type']) {
-            console.log(this.updatedData);
-            this.mapped[j]['value']['Story Status'] = this.updatedData['value']['Story Status']
-            this.mapped[j]['value']['Activity Status'] = this.updatedData['value']['Activity Status']
-            this.mapped[j]['value']['Date'] = this.updatedData['value']['Date']
-            this.mapped[j]['value']['Consumed SP'] = this.updatedData['value']['Consumed SP']
-            this.mapped[j]['value']['Activity Start Date'] = this.updatedData['value']['Activity Start Date']
-            this.mapped[j]['value']['Activity End Date'] = this.updatedData['value']['Activity End Date']
-            this.mapped[j]['value']['Resource'] = this.updatedData['value']['Resource']
-            this.mapped[j]['value']['Reason of Variance'] = this.updatedData['value']['Reason of Variance']
-            this.mapped[j]['value']['Corrective Measures'] = this.updatedData['value']['Corrective Measures']
-            this.mapped[j]['value']['Risk If Any'] = this.updatedData['value']['Risk If Any']
+            console.log(this.updatedData1);
+            this.mapped[j]['value']['Story Status'] = this.updatedData1['value']['Story Status']
+            this.mapped[j]['value']['Activity Status'] = this.updatedData1['value']['Activity Status']            
+            this.mapped[j]['value']['Date'] = this.updatedData1['value']['Date']
+            this.mapped[j]['value']['Consumed SP'] = this.updatedData1['value']['Consumed SP']
+            this.mapped[j]['value']['Activity Start Date'] = this.updatedData1['value']['Activity Start Date']
+            this.mapped[j]['value']['Activity End Date'] = this.updatedData1['value']['Activity End Date']
+            this.mapped[j]['value']['Resource'] = this.updatedData1['value']['Resource']
+            this.mapped[j]['value']['Reason of Variance'] = this.updatedData1['value']['Reason of Variance']
+            this.mapped[j]['value']['Corrective Measures'] = this.updatedData1['value']['Corrective Measures']
+            this.mapped[j]['value']['Risk If Any'] = this.updatedData1['value']['Risk If Any']
             console.log(this.mapped);
 
             for (var i = 0; i < this.mapped.length; i++) {
