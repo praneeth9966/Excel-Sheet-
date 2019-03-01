@@ -1,0 +1,29 @@
+<div class="signup-form">
+  <form (ngSubmit)="onSubmit()" #register="ngForm">
+    <h2>Register</h2>
+    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+    <div class="form-group">
+        <input type="text" class="form-control" name="first_name" ngModel placeholder="First Name" required="required">
+    </div>
+    <div class="form-group">
+        <input type="text"  name="Username" ngModel class="form-control" placeholder="Username" required="required">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" ngModel placeholder="Password" required="required">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="confirm_password" ngModel placeholder="Confirm Password"
+        required="required">
+    </div>
+    <!-- <div class="form-group">
+      <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of
+          Use</a> &amp; <a href="#">Privacy Policy</a></label>
+    </div> -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+    </div>
+  </form>
+
+</div>
+
+  <p class="text-center"><a href="/login">Already have an account? Sign in </a></p>

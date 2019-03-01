@@ -9,9 +9,15 @@ import { DataServiceService } from './Services/data-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ExcelService } from './Services/excel-service/excel.service';
 import { DatePipe } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
