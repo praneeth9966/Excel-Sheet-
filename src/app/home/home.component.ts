@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DataServiceService } from '../Services/data-service.service';
 import { ExcelService } from '../Services/excel-service/excel.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -36,8 +37,9 @@ export class HomeComponent implements OnInit {
   public exportNewData: any = [];
   public myDate=new Date();
     public today='';
+
   constructor(private dataService: DataServiceService,
-    private excelService: ExcelService,private datePipe: DatePipe) {
+    private excelService: ExcelService,private datePipe: DatePipe, private router:Router) {
       this.today = this.datePipe.transform(this.myDate, 'MM-dd-yyyy');
       console.log( this.today);
       
@@ -45,6 +47,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log( this.today);
+  }
+
+  logout(){
+    localStorage.removeItem('myToken');
+    this.router.navigateByUrl('/login');
   }
 
   newUserDeatails() {

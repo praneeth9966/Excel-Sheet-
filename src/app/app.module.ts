@@ -12,6 +12,8 @@ import { DatePipe } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthService } from './Services/auth.service';
+import { AuthGuardService } from './Services/auth-guard.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
 
   ],
-  providers: [DataServiceService,ExcelService,DatePipe],
+  providers: [DataServiceService,ExcelService,DatePipe, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
