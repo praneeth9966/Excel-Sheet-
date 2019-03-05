@@ -1,19 +1,29 @@
 <div class="login-form">
     <form (ngSubmit)="onSignIn(login)" #login="ngForm">
-        <h2 class="text-center">Log in</h2>       
-        <div class="form-group">
-            <input type="email" id="email" name="email" ngModel class="form-control" placeholder="email" required="required">
+        <h2 class="text-center">Sprint SignIn</h2>
+        <div class="form-group star">
+        <dt><label for="role">Login as</label></dt>
+        <select name="role" id="role" class="form-control" [ngModel]="defaultrole"
+                    required>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </div>             
+        <div class="form-group star">
+                <dt><label for="userName">User Name</label></dt>
+              <input type="text" class="form-control" name="userName" ngModel  required="required">
         </div>
-        <div class="form-group">
-            <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required="required">
+        <div class="form-group star">
+                <dt><label for="password">Password</label></dt>
+              <input type="password" id="password" class="form-control" name="password" ngModel  required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block" [disabled]="!login.valid">Log in</button>
         </div>
-        <div class="clearfix">
+        <!-- <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
             <a href="#" class="pull-right">Forgot Password?</a>
-        </div>        
+        </div>         -->
     </form>
     <p class="text-center"><a href="/register">Create an Account</a></p>
 </div>

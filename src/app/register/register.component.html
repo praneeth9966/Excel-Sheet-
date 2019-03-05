@@ -1,15 +1,26 @@
 <div class="signup-form">
   <form (ngSubmit)="onSubmit(register)" #register="ngForm">
-    <h2>Register</h2>
+    <h2>Sprint Register</h2>
     <p class="hint-text">Create your account. It's free and only takes a minute.</p>
-    <div class="form-group">
-        <input type="text" class="form-control" name="first_name" ngModel placeholder="First Name" required="required">
+    
+    <!-- <div class="form-group">
+        <input type="text"  name="role" id="role" ngModel class="form-control" placeholder="Role" required="required">
+    </div> -->
+    <div class="form-group star">
+        <dt><label for="role">Choose a Role</label></dt>
+      <select name="role" id="role" class="form-control" [ngModel]="defaultrole"
+                    required>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                  </select>
     </div>
-    <div class="form-group">
-        <input type="email"  name="email" id="email" ngModel class="form-control" placeholder="email" required="required">
-    </div>
-    <div class="form-group">
-      <input type="password" id="password" class="form-control" name="password" ngModel placeholder="Password" required="required">
+    <div class="form-group star">
+        <dt><label for="userName">User Name</label></dt>
+      <input type="text" class="form-control" name="userName" ngModel  required="required">
+  </div>
+    <div class="form-group star">
+        <dt><label for="password">Password</label></dt>
+      <input type="password" id="password" class="form-control" name="password" ngModel  required="required">
     </div>
     <!-- <div class="form-group">
       <input type="password" class="form-control" name="confirm_password" ngModel placeholder="Confirm Password"

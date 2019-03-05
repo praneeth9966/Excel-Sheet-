@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
+import { DataServiceService } from '../Services/data-service.service';
 
 @Component({
   selector: 'app-register',
@@ -9,43 +10,42 @@ import { AuthService } from '../Services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   // @ViewChild('register') registerData: NgForm;
-  
+  defaultrole = "Choose a Role";
   public firstName;
   public Username;
   public password;
   public confirmPassword;
   public value;
-
-  constructor(private authService: AuthService) { }
+  public data: any = [];
+  constructor(private authService: AuthService, private dataService: DataServiceService) { }
 
   ngOnInit() {
     console.log(localStorage.getItem('Username'));
   }
 
-  onSubmit(form: NgForm){
-    const email = form.value.email;
-    console.log(email);
-    const password = form.value.password;
-    console.log(password);
-    this.authService.signupUser(email, password);
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    console.log(form.value.role);
+
+    // this.authService.signupUser(email, password);
+
+    this.data = JSON.stringify(form.value);
+    if (form.value.role === 'User') {
+      this.dataService.postUserData(this.data)
+        .subscribe(
+          (response) => {
+            console.log(response)
+          },
+          (error) => console.log(error)
+        );
+    }
+    else if (form.value.role === 'Admin') {
+      this.dataService.postAdminData(this.data)
+        .subscribe((response) => {
+          console.log(response);
+        },
+          (error) => console.log(error)
+        )
+    }
   }
-  // onSubmit(){
-  //   console.log(this.registerData);
-  //   let fn = this.registerData['value']['first_name'];
-  //   let un = this.registerData['value']['Username'];
-  //   let pwd = this.registerData['value']['password'];
-  //   let cnpwd = this.registerData['value']['confirm_password'];
-  //   let value1
-  //   console.log(fn);
-  //   console.log(un);
-  //   console.log(pwd);
-  //   console.log(cnpwd);
-
-  //   localStorage.setItem('firstName', fn);
-  //   localStorage.setItem('Username', un);
-  //   localStorage.setItem('password', pwd);
-  //   localStorage.setItem('confirmPassword', cnpwd);
-
-
-  // }
 }

@@ -26,4 +26,18 @@ export class DataServiceService {
     return this.http.put('https://tracker-9cafc.firebaseio.com/.json?auth=' + token, newData);
   }
 
+  postUserData(userData: any[]){
+    return this.http.post('https://userdetails-a02c9.firebaseio.com/.json', userData)
+  }
+
+  getUserData(){
+    return this.http.get('https://userdetails-a02c9.firebaseio.com/.json')
+  }
+  postAdminData(adminData : any[]){
+    return this.http.post('https://admindetails-2f829.firebaseio.com/.json',adminData)
+  }
+  getAdminData(){
+    return this.http.get('https://admindetails-2f829.firebaseio.com/.json')
+  }
+
 }
